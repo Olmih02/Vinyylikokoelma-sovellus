@@ -14,6 +14,7 @@ public class AppUser {
     @Column(unique = true)
     private String username;
     private String password;
+    private String role;
 
     @OneToMany(mappedBy = "owner")
     private List<Vinyl> vinyls;
@@ -58,6 +59,14 @@ public class AppUser {
 
     public void setVinyls(List<Vinyl> vinyls) {
         this.vinyls = vinyls;
+    }
+
+    public String getRole() {
+        return role; // Getter for the role field
+    }
+
+    public void setRole(String role) {
+        this.role = role; // Setter for the role field
     }
 
 

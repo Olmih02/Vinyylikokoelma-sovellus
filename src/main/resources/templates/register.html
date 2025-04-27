@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <meta charset="UTF-8">
-  <title>Rekisteröidy</title>
-  <link rel="stylesheet" th:href="@{/css/style.css}"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luo tunnus</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
+
 <body>
-  <div class="container">
-    <h1>Rekisteröidy</h1>
-    <form th:action="@{/register}" th:object="${appUser}" method="post">
-      <div>
-        <label for="username">Käyttäjätunnus:</label>
-        <input type="text" id="username" th:field="*{username}" required/>
-      </div>
-      <div>
-        <label for="password">Salasana:</label>
-        <input type="password" id="password" th:field="*{password}" required/>
-      </div>
-      <div>
-        <button type="submit" class="button add-button">Rekisteröidy</button>
-      </div>
-    </form>
-    <p>Onko sinulla jo tunnus? <a th:href="@{/login}">Kirjaudu tästä</a></p>
-  </div>
+  <main class="container">
+    <div class="auth-container">
+      <h2>Luo tunnus</h2>
+      <form th:action="@{/register}" method="post" class="auth-form">
+        <div class="form-group">
+          <label for="username">Käyttäjä</label>
+          <input type="text" id="username" name="username" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Salasana</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <button type="submit">Rekisteröidy</button>
+        <div class="auth-links">
+          <a th:href="@{/login}">Jo jäsen? Kirjaudu</a>
+        </div>
+      </form>
+    </div>
+  </main>
 </body>
-</html
+
+</html>

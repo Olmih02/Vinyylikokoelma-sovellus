@@ -191,3 +191,81 @@ th.sorted-desc::after {
   object-fit: cover;
   border-radius: 4px;
 }
+
+
+/* ---------------------------------------------------
+   Authentication (login/register) pages
+--------------------------------------------------- */
+
+/* Keskitetty kortti, jossa lomakkeet */
+.auth-container {
+  max-width: 400px;
+  margin: 4rem auto;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Lomakkeen otsikko */
+.auth-container h2 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #222;
+  font-size: 1.5rem;
+}
+
+/* Lomake ja kenttäryhmät */
+.auth-form .form-group {
+  margin-bottom: 1.25rem;
+}
+.auth-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #333;
+}
+.auth-form input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.auth-form input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+  outline: none;
+}
+
+/* Lähetä-nappi lomakkeessa */
+.auth-form button {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.auth-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Linkit lomakkeen alalaidassa (esim. “Rekisteröidy” / “Kirjaudu”) */
+.auth-form .auth-links {
+  margin-top: 1rem;
+  text-align: center;
+}
+.auth-form .auth-links a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.auth-form .auth-links a:hover {
+  text-decoration: underline;
+}

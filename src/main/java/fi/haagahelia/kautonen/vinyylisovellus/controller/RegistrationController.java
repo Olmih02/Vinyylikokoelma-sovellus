@@ -14,9 +14,11 @@ import fi.haagahelia.kautonen.vinyylisovellus.repository.AppUserRepository;
 @Controller
 public class RegistrationController {
 
-    @Autowired private AppUserRepository userRepo;
-    @Autowired private PasswordEncoder encoder;
+    @Autowired
+    private AppUserRepository userRepo;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;  // injektoi WebSecurityConfigista
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
@@ -24,13 +26,13 @@ public class RegistrationController {
         return "register";
     }
 
-
     @PostMapping("/register")
     public String registerUser(@ModelAttribute AppUser appUser) {
-
-        appUser.setPassword(encoder.encode(appUser.getPassword()));
+        // salasanan koodaus
+        appUser.setPassword(passwordEncoder.encode(appUser.getPassword()));
+        // oletusrooli
+        appUser.setRole("USER");
         userRepo.save(appUser);
         return "redirect:/login?registered";
     }
-
 }

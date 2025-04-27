@@ -11,6 +11,14 @@
   <header>
     <h1>Omat vinyylit</h1>
     <a th:href="@{/addvinyl}" class="button add-button">+ Lisää vinyyli</a>
+
+    <!-- Logout-lomake -->
+    <form th:action="@{/logout}" method="post" style="display:inline">
+      <!-- Thymeleaf lisää CSRF-kentän automaattisesti jos käyttöönotettu -->
+      <button type="submit" class="button button-delete">Kirjaudu ulos</button>
+    </form>
+
+
   </header>
   <main class="container">
     <!-- Haku- ja suodatuslomake -->
@@ -42,9 +50,8 @@
         <tbody>
           <tr th:each="v : ${vinyls}">
             <td>
-              <img th:if="${v.coverFilename}" 
-                   th:src="@{/images/covers/{fn}(fn=${v.coverFilename})}"
-                   alt="Cover" class="cover-thumb"/>
+              <img th:if="${v.coverFilename}" th:src="@{/images/covers/{fn}(fn=${v.coverFilename})}" alt="Cover"
+                class="cover-thumb" />
             </td>
             <td th:text="${v.title}"></td>
             <td th:text="${v.artist}"></td>
@@ -63,8 +70,8 @@
 
     <p class="total-value">
       Yhteenlaskettu arvo:
-  <span id="totalValue" th:text="${totalValue}">0.00</span>
-  €
+      <span id="totalValue" th:text="${totalValue}">0.00</span>
+      €
     </p>
   </main>
   <footer>

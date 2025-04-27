@@ -2,29 +2,28 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Kirjaudu sisään</title>
-  <link rel="stylesheet" th:href="@{/css/style.css}" />
+  <title>Kirjaudu</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-  <div class="container">
-    <h1>Kirjaudu</h1>
-    <form th:action="@{/login}" method="post">
-      <div>
-        <label for="username">Käyttäjä:</label>
-        <input type="text" id="username" name="username" required autofocus/>
-      </div>
-      <div>
-        <label for="password">Salasana:</label>
-        <input type="password" id="password" name="password" required/>
-      </div>
-      <div>
-        <button type="submit" class="button add-button">Kirjaudu</button>
-      </div>
-      <div th:if="${param.error}">
-        <p class="error">Virheellinen käyttäjätunnus tai salasana</p>
-      </div>
-    </form>
-    <p>Etkö ole vielä jäsen? <a th:href="@{/register}">Luo tunnus</a></p>
-  </div>
+  <main class="container">
+    <div class="auth-container">
+      <h2>Kirjaudu sisään</h2>
+      <form th:action="@{/login}" method="post" class="auth-form">
+        <div class="form-group">
+          <label for="username">Käyttäjä</label>
+          <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Salasana</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Kirjaudu</button>
+        <div class="auth-links">
+          <a th:href="@{/register}">Etkö ole vielä jäsen? Luo tunnus</a>
+        </div>
+      </form>
+    </div>
+  </main>
 </body>
 </html>
