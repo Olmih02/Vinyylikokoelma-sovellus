@@ -62,11 +62,11 @@ public class AppUser {
     }
 
     public String getRole() {
-        return role; // Getter for the role field
+        return role; 
     }
 
     public void setRole(String role) {
-        this.role = role; // Setter for the role field
+        this.role = role; 
     }
 
 
