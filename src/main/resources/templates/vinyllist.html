@@ -12,28 +12,28 @@
     <h1>Omat vinyylit</h1>
     <a th:href="@{/addvinyl}" class="button add-button">+ Lisää vinyyli</a>
 
-    <!-- Logout-lomake -->
+    
     <form th:action="@{/logout}" method="post" style="display:inline">
-      <!-- Thymeleaf lisää CSRF-kentän automaattisesti jos käyttöönotettu -->
+      
       <button type="submit" class="button button-delete">Kirjaudu ulos</button>
     </form>
 
 
   </header>
   <main class="container">
-    <!-- Haku- ja suodatuslomake -->
+    
     <div class="filter-panel">
       <input type="text" id="searchInput" placeholder="Etsi vinyylejä..." />
       <select id="artistFilter">
         <option value="">Kaikki artistit</option>
-        <!-- Iterate over artists list from controller -->
+       
         <option th:each="a : ${artists}" th:value="${a}" th:text="${a}">
         </option>
       </select>
 
     </div>
 
-    <!-- Scrollattava taulukko -->
+   
     <div class="scrollable-container">
       <table id="vinylTable">
         <thead>
@@ -78,7 +78,7 @@
     © 2025 Olli Kautonen
   </footer>
 
-  <!-- JavaScript suodatukseen -->
+  
   <script th:src="@{/js/vinyllist.js}"></script>
 </body>
 
