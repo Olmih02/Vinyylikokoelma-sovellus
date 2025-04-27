@@ -1,0 +1,193 @@
+/* ---------------------------------------------------
+   Yleiset asettelut ja kontaineri
+--------------------------------------------------- */
+.container {
+  /* Maksimileveys; sivun reuna-alueet auto-marginaalilla keskitettynä */
+  max-width: 1900px;
+  margin: auto;
+  padding: 2rem 1rem;
+}
+
+/* ---------------------------------------------------
+   Header ja Lisää-vinyyli -nappula
+--------------------------------------------------- */
+header {
+  /* Tummataustainen yläosa, jossa sivun otsikko ja nappula */
+  background-color: #222;
+  color: #fff;
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.add-button {
+  /* Lisää-vinyyli -linkin tyyli */
+  background-color: #28a745;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+.add-button:hover {
+  /* Hover-tila Lisää-napille */
+  background-color: #218838;
+}
+
+/* ---------------------------------------------------
+   Suodatuspaneeli (haku ja artistivalitsin)
+--------------------------------------------------- */
+.filter-panel {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.filter-panel input,
+.filter-panel select {
+  /* Tekstin koko ja reunaviiva kentille */
+  font-size: 1.05rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* ---------------------------------------------------
+   Scrollattava taulukko ja sticky-header
+--------------------------------------------------- */
+.scrollable-container {
+  /* Korkeus ja leveys, scrollaus sisällölle */
+  max-height: 900px;
+  max-width: 100%;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.scrollable-container table {
+  /* Taulukon leveys ja fontin suurennus */
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.1rem;
+}
+.scrollable-container th,
+.scrollable-container td {
+  /* Solujen padding ja ala-reunaviiva */
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+.scrollable-container thead th {
+  /* Pysyvä otsikkorivi scrolatessa */
+  position: sticky;
+  top: 0;
+  background-color: #f9f9f9;
+  z-index: 1;
+  font-size: 1.1rem;
+}
+.scrollable-container tbody tr:hover {
+  /* Hover-efekti riveille */
+  background-color: #f1f1f1;
+}
+
+/* ---------------------------------------------------
+   Yhteenlaskun tulos ja footer
+--------------------------------------------------- */
+.total-value {
+  /* Tekstin kohdistus ja lihavointi summalle */
+  text-align: right;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+footer {
+  /* Alaosan tyyli */
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* ---------------------------------------------------
+   Koko sivun tausta ja flex-asettelu
+--------------------------------------------------- */
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: #f4f4f4;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+main.container {
+  /* Pääsisältö venyy footerin kanssa */
+  flex: 1;
+}
+footer {
+  /* Footer ei kutistu pois näkyvistä */
+  flex-shrink: 0;
+}
+
+/* ---------------------------------------------------
+   Sarakeotsikoiden lajittelupainikkeiden indikaattorit
+--------------------------------------------------- */
+th.sorted-asc::after {
+  content: " ▲";
+}
+th.sorted-desc::after {
+  content: " ▼";
+}
+
+/* ---------------------------------------------------
+   Yleinen nappityyli (Lisää/Muokkaa/Poista)
+--------------------------------------------------- */
+.button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 4px;
+  text-align: center;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.button.add-button {
+  /* Sininen Lisää-painike */
+  background-color: #007bff;
+  color: #fff;
+}
+.button.add-button:hover {
+  background-color: #0056b3;
+}
+
+.button-edit {
+  /* Vihreä Muokkaa-painike */
+  background-color: #28a745;
+  color: #fff;
+}
+.button-edit:hover {
+  background-color: #218838;
+}
+
+.button-delete {
+  /* Punainen Poista-painike */
+  background-color: #dc3545;
+  color: #fff;
+}
+.button-delete:hover {
+  background-color: #c82333;
+}
+
+/* ---------------------------------------------------
+   Kansikuvan thumbnail-tyyli
+--------------------------------------------------- */
+.cover-thumb {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 4px;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Vinyylilista</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+
+<body>
+  <header>
+    <h1>Omat vinyylit</h1>
+    <a th:href="@{/addvinyl}" class="button add-button">+ Lisää vinyyli</a>
+  </header>
+  <main class="container">
+    <!-- Haku- ja suodatuslomake -->
+    <div class="filter-panel">
+      <input type="text" id="searchInput" placeholder="Etsi vinyylejä..." />
+      <select id="artistFilter">
+        <option value="">Kaikki artistit</option>
+        <!-- Iterate over artists list from controller -->
+        <option th:each="a : ${artists}" th:value="${a}" th:text="${a}">
+        </option>
+      </select>
+
+    </div>
+
+    <!-- Scrollattava taulukko -->
+    <div class="scrollable-container">
+      <table id="vinylTable">
+        <thead>
+          <tr>
+            <th>Kansikuva</th>
+            <th>Nimi</th>
+            <th>Artisti</th>
+            <th>Julkaisuvuosi</th>
+            <th>Lisätiedot</th>
+            <th>Ostohinta</th>
+            <th>Toiminnot</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="v : ${vinyls}">
+            <td>
+              <img th:if="${v.coverFilename}" 
+                   th:src="@{/images/covers/{fn}(fn=${v.coverFilename})}"
+                   alt="Cover" class="cover-thumb"/>
+            </td>
+            <td th:text="${v.title}"></td>
+            <td th:text="${v.artist}"></td>
+            <td th:text="${v.releaseYear}"></td>
+            <td th:text="${v.extraInfo}"></td>
+            <td th:text="${v.price}"></td>
+            <td>
+              <a th:href="@{'/editvinyl/' + ${v.id}}" class="button button-edit">Muokkaa</a>
+              <a th:href="@{'/deletevinyl/' + ${v.id}}" class="button button-delete"
+                onclick="return confirm('Poistetaanko?')">Poista</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="total-value">
+      Yhteenlaskettu arvo:
+  <span id="totalValue" th:text="${totalValue}">0.00</span>
+  €
+    </p>
+  </main>
+  <footer>
+    © 2025 Olli Kautonen
+  </footer>
+
+  <!-- JavaScript suodatukseen -->
+  <script th:src="@{/js/vinyllist.js}"></script>
+</body>
+
+</html>
