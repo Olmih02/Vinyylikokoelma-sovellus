@@ -39,4 +39,6 @@ public interface VinylRepository extends CrudRepository<Vinyl, Long> {
      */
     List<Vinyl> findByPrice(double price);
 
+    List<Vinyl> findByOwnerUsername(String username);
+
 }

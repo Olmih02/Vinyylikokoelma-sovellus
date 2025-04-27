@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 /**
  * Entity-luokka, joka edustaa vinyylilevyä tietokannassa.
@@ -36,6 +38,10 @@ public class Vinyl {
     /** Tiedostonimi, jonne kansikuva on tallennettu uploads/covers -hakemistoon */
     private String coverFilename;
 
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
+    private AppUser owner;
+
     /**
      * Oletuskonstruktori JPA:ta varten.
      */
@@ -50,12 +56,21 @@ public class Vinyl {
      * @param price        ostohinta
      * @param extraInfo    vapaa lisätiedot-kenttä
      */
-    public Vinyl(String artist, String title, String releaseYear, double price, String extraInfo) {
+    public Vinyl(String artist, String title, String releaseYear, double price, String extraInfo, AppUser owner) {
         this.artist = artist;
         this.title = title;
         this.releaseYear = releaseYear;
         this.price = price;
         this.extraInfo = extraInfo;
+        this.owner = owner;
+    }
+
+    public AppUser getOwner() {
+        return owner;
+    }
+
+    public void setOwner(AppUser owner) {
+        this.owner = owner;
     }
 
     /** @return olion uniikki tunniste */
@@ -127,4 +142,6 @@ public class Vinyl {
     public void setCoverFilename(String coverFilename) {
         this.coverFilename = coverFilename;
     }
+
+ 
 }
