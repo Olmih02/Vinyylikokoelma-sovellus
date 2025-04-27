@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Kirjaudu sisään</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+  <div class="container">
+    <h1>Kirjaudu</h1>
+    <form th:action="@{/login}" method="post">
+      <div>
+        <label for="username">Käyttäjä:</label>
+        <input type="text" id="username" name="username" required autofocus/>
+      </div>
+      <div>
+        <label for="password">Salasana:</label>
+        <input type="password" id="password" name="password" required/>
+      </div>
+      <div>
+        <button type="submit" class="button add-button">Kirjaudu</button>
+      </div>
+      <div th:if="${param.error}">
+        <p class="error">Virheellinen käyttäjätunnus tai salasana</p>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

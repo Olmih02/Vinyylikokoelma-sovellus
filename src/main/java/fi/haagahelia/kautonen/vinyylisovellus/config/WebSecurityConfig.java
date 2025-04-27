@@ -17,18 +17,20 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
+          // 1) Salli staattiset resurssit ja login‐sivun GET ilman autentikaatiota
           .authorizeHttpRequests(auth -> auth
-            .requestMatchers("/css/**","/register**").permitAll()
+            .requestMatchers("/css/**", "/images/**", "/login").permitAll()
             .anyRequest().authenticated()
           )
-          .formLogin(login -> login
-            .loginPage("/login")
+          // 2) Form‐login /login –sivulla
+          .formLogin(form -> form
+            .loginPage("/login")                // oma login‐sivu
+            .loginProcessingUrl("/login")       // post‐action
             .defaultSuccessUrl("/vinyllist", true)
             .permitAll()
           )
+          // 3) Logout sallittu kaikille
           .logout(logout -> logout.permitAll());
-
-     
 
         return http.build();
     }
